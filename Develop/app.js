@@ -4,7 +4,8 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-// const writeFileAsync = promisify(fs.writeFile);
+const util = require('util')
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -162,9 +163,10 @@ function askAboutTheTeam() {
   async function quit() {
     console.log("\nCreating Your HTML File");
     
-    await fs.writeFile(outputPath,render(employees))
+    const rendering = await render(employees)
+    await writeFileAsync(outputPath,rendering)
     console.log("done! File was Created")
-    // process.exit(0);
+
   }
 
 
