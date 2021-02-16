@@ -1,13 +1,16 @@
-<div class="card employee-card">
+<div class="row" style="margin: auto; margin-bottom:50px">
+<div class="col-12 ">
+    <div class="card employee-card" style="width: 250px; border-radius: 5%;color:rgb(46, 5, 5);text-align: center;width: 280px;height: 280px;background-color: rgb(254, 240, 191);">
     <div class="card-header">
-        <h2 class="card-title">{{ name }}</h2>
+        <h2 class="card-title"style="margin: 0px;">{{ name }}<img src="../../Assets/pin.png" width="50px" alt=""></h2>
         <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>{{ role }}</h3>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="padding:0px;background-color:rgb(254, 240, 191);">
         <ul class="list-group">
-            <li class="list-group-item">ID: {{ id }}</li>
-            <li class="list-group-item">Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
-            <li class="list-group-item">Office number: {{ officeNumber }}</li>
+            <li class="list-group-item" style="border-style:none;background-color:transparent ;color:rgb(46, 5, 5)">ID: {{ id }}</li>
+            <li class="list-group-item" style="padding:0px;border-style:none;background-color:transparent ;color:rgb(46, 5, 5)">Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
+            <li class="list-group-item" style="border-style:none;background-color:transparent ;color:rgb(46, 5, 5)">Office number: {{ officeNumber }}</li>
         </ul>
     </div>
 </div>
+</div></div>

@@ -12,17 +12,18 @@
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
 </head>
 
-<body>
+<body style="background-image: url(../../Assets/pinboard.jpg);background-repeat: no-repeat;background-attachment: fixed;
+background-size: cover;">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
-            </div>
+            <!-- <div class="col-12 jumbotron mb-3 team-heading" style="background-image: url(../../Assets/wall2.jfif);"> -->
+                <h1 class="col-12 mb-3 team-heading text-center" style=" margin-top:80px;color:rgb(46, 5, 5);font-weight: bold; ">My Team</h1>
+            <!-- </div> -->
         </div>
     </div>
-    <div class="container">
+    <div class="container d-flex justify-content-center" style="margin-top: 100px;">
         <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
+            <!-- <div class="team-area col-12 d-flex justify-content-center"> -->
                 {{ team }}
             </div>
         </div>

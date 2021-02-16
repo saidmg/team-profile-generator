@@ -18,6 +18,61 @@ let employees =[]
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+
+// const confirmAnswerValidator = async (val) => {
+//   if (val !== 'y' || val !== 'n') {
+//      return 'Incorrect asnwer';
+//   }
+//   return true;
+// };
+
+const validateGitHub = async function (input) {
+  if (input === '' ) {
+  return 'Please enter a valid input';
+}
+return true;
+}
+
+ const allLetter = async function (input)
+  {
+   var letters = /^[A-Za-z]+$/;
+   if(input.match(letters) && input !== '')
+     {
+      return true;
+     }
+   else
+     {
+     return 'Please input letters only'
+     }
+  }
+
+  const validateEmail = async function (input)
+  {
+  //  var letters = /^[A-Za-z]+$/;
+   if(input.includes('@') && input.includes('.') && input !== '' && !input.includes(' '))
+     {
+      return true;
+     }
+   else
+     {
+     return 'Please input a correct email'
+     }
+  }
+
+const allnumeric = async function (input)
+   {
+      var numbers = /^[0-9]+$/;
+      if(input.match(numbers) && input !== '')
+      {
+      return true;
+      }
+      else
+      {
+    return 'Please input numbers only';
+     
+      }
+   } 
+
 function askAboutTheTeam() {
     inquirer
       .prompt([
@@ -26,7 +81,6 @@ function askAboutTheTeam() {
           name: "role",
           message: "What type of employee would you like to add?",
           choices: [
-            "Manager",
             "Engineer",
             "Intern",
         ],
@@ -34,9 +88,7 @@ function askAboutTheTeam() {
       ])
       .then(val => {
         // If the user says yes , add another member again, otherwise stop
-        if (val.role === "Manager") {
-          managerInfo();
-        } else if (val.role === "Engineer"){
+        if (val.role === "Engineer"){
             engineerInfo();
         }
         else{
@@ -52,21 +104,25 @@ function askAboutTheTeam() {
         type: "input",
         name: "name",
         message: "What is the Manager's name?",
+        validate: allLetter
       },
       {
         type: "input",
         name: "id",
         message: "What is the Manager's ID?",
+        validate: allnumeric
       },
       {
         type: "input",
         name: "email",
         message: "What is the Manager's email?",
+        validate: validateEmail
       },
       {
         type: "input",
         name: "officeNumber",
         message: "What is the Manager's office number?",
+        validate: allnumeric
       }
     ])
     .then(val => {
@@ -84,21 +140,25 @@ function askAboutTheTeam() {
         type: "input",
         name: "name",
         message: "What is the Engineer's name?",
+        validate: allLetter
       },
       {
         type: "input",
         name: "id",
         message: "What is the Engineer's ID?",
+        validate: allnumeric
       },
       {
         type: "input",
         name: "email",
         message: "What is the Engineer's email?",
+        validate: validateEmail
       },
       {
         type: "input",
         name: "github",
         message: "What is the Engineer's GitHub username?",
+        validate: validateGitHub
       }
     ])
     .then(val => {
@@ -116,21 +176,28 @@ function askAboutTheTeam() {
         type: "input",
         name: "name",
         message: "What is the Intern's name?",
+        validate: allLetter
+
       },
       {
         type: "input",
         name: "id",
         message: "What is the Intern's ID?",
+        validate: allnumeric
+
       },
       {
         type: "input",
         name: "email",
         message: "What is the Intern's email?",
+        validate: validateEmail
       },
       {
         type: "input",
         name: "school",
         message: "What is the Intern's school name?",
+        validate: allLetter
+
       }
     ])
     .then(val => {
@@ -148,7 +215,7 @@ function askAboutTheTeam() {
       {
         type: "confirm",
         name: "choice",
-        message: "Add another employee"
+        message: "Add another employee",
       }
     ])
     .then(val => {
@@ -161,7 +228,7 @@ function askAboutTheTeam() {
   }
 
   async function quit() {
-    console.log("\nCreating Your HTML File");
+    console.log("\nCreating Your HTML File ...");
     
     const rendering = await render(employees)
     await writeFileAsync(outputPath,rendering)
@@ -173,9 +240,9 @@ function askAboutTheTeam() {
 async function init(){
     try{
         
-        const response = await askAboutTheTeam();  
+         await managerInfo();  
        
-        console.log("Success!")
+        // console.log("Success!")
     }
     catch(err){
         console.log(err)
